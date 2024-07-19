@@ -1,0 +1,55 @@
+main {
+    padding: 40px 0;
+}
+
+main h1 {
+    padding: 40px 0;
+    color: #013E60;
+    text-align: center;
+}
+
+main form {
+    max-width: 700px;
+    margin: auto;
+    padding: 0 20px;
+}
+
+main form div {
+    margin-bottom: 20px;
+}
+
+main form div label {
+    display: block;
+    padding: 10px 0;
+    font-size: 25px;
+}
+
+main form div input {
+    display: block;
+    font-size: 20px;
+    padding: 5px 10px;
+    width: 100%;
+}
+
+main form div textarea {
+    display: block;
+    font-size: 20px;
+    padding: 5px 10px;
+    width: 100%;
+    resize: none;
+    height: 250px;
+}
+
+main form div button {
+    padding: 15px 40px;
+    font-size: 20px;
+    color: white;
+    background-color: #013E60;
+    cursor: pointer;
+    border: 2px solid #013E60;
+}
+
+main form div button:hover {
+    background-color: white;
+    color: #013E60;
+}

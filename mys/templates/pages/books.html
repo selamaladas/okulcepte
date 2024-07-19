@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="wrapper" style=" display: flex; margin: 0; padding: 0;">
+  <div class="content mx-5 w-100">
+    <div class="container-fluid" style="padding: 0;">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1>DERSLER</h1>
+        </div>
+      </div>
+      <section class="content">
+        <div class="card card-solid">
+          <div class="card-body pb-0">
+            <div class="row d-flex align-items-stretch">
+              {% for ders in Ders %}
+              <!--dersin baslangici -->
+              <div class="col-12 col-sm-4 col-md-3 d-flex align-items-stretch  ">
+                <div  class="card bg-light">
+                  <div class="card-header text-muted border-bottom-0">
+                    {{ders.category}}
+                  </div>
+                  <div class="card-body pt-0">
+                    <div class="row">
+                      <div class="col-7">
+                        <h2 class="lead"><b>{{ders.title}} </b></h2><!--ders adi-->
+                        <ul class="  fa-ul text-muted">
+                          <li class="small"><span class="fa-li"></span>Durum: {{ders.status}}</li><!--ders durumu-->
+                          <li class="small"><span class="fa-li"></span>SAATI:{{ders.saat}}</li>
+                          <span class="description-text">SAATI</span>
+                        </ul>
+                      </div>
+                      <div class="col-5 text-center">
+                        <img style="height: 120px; width: 120px;" src="{{ders.photo_ders.url}}" alt=""
+                             class="img-circle img-fluid">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card-footer">
+                    <div class="">
+                      <a href="{% url 'delete_book' ders.id %}" class="btn btn-sm bg-danger">
+                        <i class="fas fa-trash"></i>
+                      </a>
+                      <a href="{% url 'update_book' ders.id %}" class="btn btn-sm btn-primary">
+                        <i class="fas fa-book"></i> Duzelt
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!--dersin bitisi-->
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+</div>
+{% endblock %}

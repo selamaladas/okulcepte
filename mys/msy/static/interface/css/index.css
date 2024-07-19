@@ -1,0 +1,90 @@
+main .header {
+    padding: 70px 0;
+    background-color: #013E60;
+}
+
+main .header div.column,
+main .header img {
+    vertical-align: top;
+    display: inline-block;
+    width: 45%;
+}
+
+main .header div.orta {
+    color: white;
+    position: relative;
+    top: 100px;
+}
+
+main .header div.orta * {
+    padding: 10px 0px;
+}
+
+main .header div.orta h1 {
+    font-size: 60px;
+}
+
+.servisler {
+    padding: 20px 0;
+    text-align: center;
+}
+
+.servisler h1 {
+    padding-bottom: 40px;
+    color: #013E60;
+}
+
+.servisler .servis {
+    vertical-align: top;
+    display: inline-block;
+    width: 28%;
+    border: 2px solid #013E60;
+    border-radius: 10px 10px;
+    padding: 20px;
+    margin: 2%;
+    text-align: left;
+    min-height: 200px;
+}
+
+.servisler .servis h3 i {
+    color: #0acfdd;
+    font-size: 40px;
+    vertical-align: middle;
+}
+
+.servisler .servis h3 {
+    font-size: 30px;
+    color: #013E60;
+}
+
+.servisler .servis p {
+    padding-top: 10px;
+    font-size: 20px;
+}
+
+@media only screen and (max-width: 950px) {
+    main .header div.column,
+    main .header div.orta,
+    main .header img {
+        display: block;
+        position: static;
+        width: 100%;
+        text-align: center;
+    }
+}
+
+@media only screen and (max-width: 800px) {
+    .servisler .servis {
+        width: 45%;
+        min-height: 150px;
+    }
+}
+
+@media only screen and (max-width: 550px) {
+    .servisler .servis {
+        width: 100%;
+        display: block;
+    }
+}
+
+

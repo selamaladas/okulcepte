@@ -1,0 +1,121 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+div.yedek {
+    padding: 0 20px;
+    max-width: 1290px;
+    margin: auto;
+    position: relative;
+}
+
+header div.header {
+    background: #013E60;
+    position: relative;
+}
+
+header div.header img {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+header nav {
+    display: inline-block;
+    vertical-align: middle;
+    position: absolute;
+    right: 20px;    
+    top: 13px;
+}
+
+footer ul,
+header ul {
+    list-style-type: none;
+}
+
+header li {
+    display: inline-block;
+    line-height: 30px;
+    margin: 0px 14px;
+}
+
+footer li a,
+header li a {
+    color: white;
+    display: block;
+    text-decoration: none;
+}
+
+footer li.active a,
+header li.active a {color: #0acfdd}
+footer li:hover a,
+header li:hover a {color: #0acfdd}
+
+
+footer {
+    background-color: #013E60;
+    color: white;
+    padding: 40px 0;
+}
+
+footer h3 {
+    color: #0acfdd;
+    margin-bottom: 10px;
+}
+
+footer .column {
+    display: inline-block;
+    width: 33%;
+    padding: 0 10px;
+    vertical-align: top;
+}
+
+
+/* MOBIL UYUMLULUK */
+@media only screen and (max-width: 950px) {
+    header div.header {
+        display: block;
+        position: static;
+    }
+    
+    header div img {
+        display: block !important;
+        margin: auto;
+    }
+
+    header div nav {
+        display: block !important;
+        margin: auto;
+        position: static;
+        text-align: center;
+    }
+
+    header div nav ul {
+        display: inline-block;
+    }
+    
+}
+
+@media only screen and (max-width: 840px) {
+    footer .column {
+        width: 30%;
+    }
+
+}
+
+@media only screen and (max-width: 550px) {
+    footer .column {
+        display: block;
+        width: 100%;
+        margin-top: 20px;
+    }
+
+}
+
+
+@media only screen and (max-width: 400px) {
+    header div nav ul li {
+        display: block;
+    }
+}

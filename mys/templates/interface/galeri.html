@@ -1,0 +1,122 @@
+{% load static%}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   
+    <!-- Theme style -->
+    <link rel="stylesheet" href="{% static 'interface/css/galeri.css' %}">
+    <link rel="stylesheet" href="{% static 'interface/css/header_footer.css' %}">
+    <!-- Google Font: Source Sans Pro -->
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+
+
+    <!--  -->
+    <link rel="stylesheet" href="./css/header_footer.css">
+    <link rel="stylesheet" href="./css/galeri.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css" integrity="sha256-XoaMnoYC5TH6/+ihMEnospgm0J1PM/nioxbOUdnM8HY=" crossorigin="anonymous">
+    <title>Okulcepte</title>
+</head>
+<body>
+    <header>
+        <div class="header">
+            <div class="yedek">
+                <img src="{% static 'interface/img/logo.png' %}">
+                <nav>
+                    <ul>
+                        <li><a href="../index">AnaSayfa</a> </li>
+                        <li><a href="../dersler">Dersler</a></li>
+                        <li><a href="../hocalar">Hocalar</a></li>
+                        <li class="active"><a href="../galeri">Galeri</a></li>
+                        <li><a href="../uyeolmak">Admın</a></li>
+                        <li><a href="../iletisim">İletisim</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="yedek">
+            <h1>Galeri</h1>
+            <p>Okulumuzun Galerisi</p>
+            <div class="swiper">
+                <div class="swiper-wrapper">
+                  <div class="swiper-slide"><img src="{% static 'interface/img/gal1.jpg' %}" alt=""></div>
+                  <div class="swiper-slide"><img src="{% static 'interface/img/gal2.jpg' %}" alt=""></div>
+                  <div class="swiper-slide"><img src="{% static 'interface/img/gal7.jpg' %}" alt=""></div>
+                  <div class="swiper-slide"><img src="{% static 'interface/img/gal4.jpg' %}" alt=""></div>
+                  <div class="swiper-slide"><img src="{% static 'interface/img/gal5.jpg' %}" alt=""></div>
+                  <div class="swiper-slide"><img src="{% static 'interface/img/gal6.jpg' %}" alt=""></div>
+                </div>
+                <div class="swiper-pagination"></div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-scrollbar"></div>
+            </div>
+    </main>
+ 
+    <footer>
+        <div class="yedek">
+            <div class="column">
+                <h3>Okul Cepte</h3>
+                <p> Okulcepte 2024 © Tüm Haklar Saklıdır.</p>
+            </div>
+    
+            <div class="column">
+                <h3>Hızlı Erişim</h3>
+                <ul>
+                    <li><a href="../index">AnaSayfa</a> </li>
+                    <li><a href="../dersler">Dersler</a></li>
+                    <li><a href="../hocalar">Hocalar</a></li>
+                    <li class="active"><a href="../galeri">Galeri</a></li>
+                    <li><a href="../uyeolmak">Admin</a></li>
+                    <li><a href="../iletisim">İletisim</a></li>
+                </ul>
+            </div>
+    
+            <div class="column">
+                <h3>İletisim</h3>
+                <h5>Adress</h5> 
+                <p> İstanbul, Turkey</p>
+                <h5>Email Adresi</h5>
+                <p>okulcepte@gmail.com</p>
+                <h5>Telefon Numarası</h5>
+                <p>+90 5378759809</p>            
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const swiper = new Swiper('.swiper', {
+        // Optional parameters
+        direction: 'vertical',
+        loop: true,
+
+        // If we need pagination
+        pagination: {
+            el: '.swiper-pagination',
+        },
+
+        // Navigation arrows
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+
+        // And if we need scrollbar
+        scrollbar: {
+            el: '.swiper-scrollbar',
+        },
+        });
+    </script>
+</body>
+</html>
+{% endblock %}

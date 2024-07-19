@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="wrapper">
+    <div class="content-wrapper mx-5 my-5">
+        <div class="card card-danger">
+            <div class="card-header">
+                <h3 class="card-title">Dersı Sil</h3>
+            </div>
+            <div class="card-body">
+                <p>Dersi Silmek İstediğini Emin MİSİN؟</p>
+            </div>
+            <div class="card-footer">
+                <form method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-danger">Sil</button>
+                    <button type="button" class="btn bg-navy blue" onclick="window.history.back();">Vazgeç</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

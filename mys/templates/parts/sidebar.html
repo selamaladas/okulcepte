@@ -1,0 +1,113 @@
+<aside style="position: fixed;" class="main-sidebar sidebar-dark-primary elevation-4">
+  <a href="{% url 'index' %}" class="brand-link">
+    <span class="brand-text ">OkulCepte</span>
+  </a>
+  <div class="sidebar">
+    <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+      <div class="image"></div>
+      <div class="info">
+        <a href="{% url 'index' %}" class="d-block">Selam Aladas</a>
+      </div>
+    </div>
+    <nav class="mt-2">
+      <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+        <li class="nav-item">
+          <a href="{% url 'students' %}" class="nav-link">
+            <i class="nav-icon fas fa-th"></i>
+            <p>Yeni Öğrenciler</p>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="{% url 'books' %}" class="nav-link">
+            <i class="nav-icon fas fa-th"></i>
+            <p>Yeni Dersler</p>
+          </a>
+        </li>
+        <li class="nav-item has-treeview">
+          <a href="#" class="nav-link">
+            <i class="nav-icon fas fa-copy"></i>
+            <p>category<i class="fas fa-angle-left right"></i></p>
+          </a>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a id="addcat" href="#" class="nav-link">
+                <i class="fa fa-plus "></i>
+                <p class="text-light">Ekle</p>
+              </a>
+            </li>
+            <div id="catinput" style="display: none;">
+              <form id="catForm" method="POST">
+                {% csrf_token %}
+                {{ formcat }}
+                <button type="submit" class="btn btn-success">save</button>
+                <button id="backcat" type="button" class="btn btn-primary">back</button>
+              </form>
+            </div>
+            {% for cat in category %}
+            <li style="cursor: pointer;" class="nav-item cat{{cat.id }}">
+              <a class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>{{ cat.name }}</p>
+              </a>
+            </li>
+            {% endfor %}
+          </ul>
+        </li>
+        <li class="nav-header">Dersler Hakında</li>
+        <li style="cursor: pointer;" class="nav-item statusseçildi">
+          <a id="statusSold" class="nav-link">
+            <i class="nav-icon far fa-circle text-danger"></i>
+            <p class="text">Ders seçildi</p>
+          </a>
+        </li>
+        <li style="cursor: pointer;" class="nav-item statustamamlandı">
+          <a class="nav-link">
+            <i class="nav-icon far fa-circle text-warning"></i>
+            <p>Ders tamamlandı</p>
+          </a>
+        </li>
+        <li style="cursor: pointer;" class="nav-item statusmevcut">
+          <a class="nav-link">
+            <i class="nav-icon far fa-circle text-info"></i>
+            <p>Ders Mevcüt</p>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</aside>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        $(document).ready(function () {
+            $("#catinput").hide();
+
+            $("#addcat").click(function () {
+                $("#catinput").show();
+            });
+
+            $("#backcat").click(function () {
+                $("#catinput").hide();
+            });
+
+            $("#catForm").submit(function (event) {
+                event.preventDefault();
+                var form = $(this);
+                $.ajax({
+                    url: "{% url 'add_category' %}",
+                    type: form.attr('method'),
+                    data: form.serialize(),
+                    success: function (response) {
+                        if (response.status === 'success') {
+                            alert('Category added: ' + response.category_name);
+                            location.reload();  // يمكنك استخدام هذا لإعادة تحميل الصفحة
+                        } else {
+                            alert('Failed to add category');
+                        }
+                    }
+                });
+            });
+        });
+    });
+</script>
+

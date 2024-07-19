@@ -1,0 +1,198 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>AKADEMI</title>
+  <link rel="stylesheet" href="{% static 'plugins/fontawesome-free/css/all.min.css' %}">
+  <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+  <link rel="stylesheet" href="{% static 'dist/css/adminlte_ar.min.css' %}">
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+  <style>
+      body {
+          display: flex;
+          flex-direction: column;
+          min-height: 100vh;
+      }
+
+      .content-wrapper {
+          flex: 1;
+      }
+  </style>
+</head>
+<body dir="rtl" class="hold-transition sidebar-mini">
+<div class="wrapper">
+  <!-- Navbar -->
+  {% include 'parts/nav.html' %}
+
+  <!-- Sidebar -->
+  <aside class="main-sidebar sidebar-dark-primary elevation-4">
+    {% include 'parts/sidebar.html' %}
+  </aside>
+
+  <!-- Content Wrapper -->
+  <div class="content-wrapper">
+    {% block content %}
+    {% endblock %}
+  </div>
+
+  <!-- Footer -->
+  <footer class="main-footer">
+    <strong>Copyright &copy; 2024-2025 <a>OkulCepte</a>.</strong>
+  </footer>
+</div>
+
+<!-- REQUIRED SCRIPTS -->
+<script src="{% static 'plugins/jquery/jquery.min.js' %}"></script>
+<script src="{% static 'plugins/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+<script src="{% static 'dist/js/adminlte.js' %}"></script>
+<script src="{% static 'plugins/chart.js/Chart.min.js' %}"></script>
+<script src="{% static 'dist/js/demo.js' %}"></script>
+
+
+<!--saat detaylari-->
+<script>
+    $(document).ready(function () {
+        var total = 0;
+        $('.toplam_saat ').each(function () {
+            $(this).hide()
+            var salary = $(this).text()
+            total += parseInt(salary)
+        });
+        $("#totalsalarys").text(total + $("#totalsalarys").text());
+
+
+    });
+
+
+    $(document).ready(function () {
+        // Calculate and update toplamsaat when either mevcutbolumler or mevcutsaati changes
+        $("#mevcutbolumler, #mevcutsaati").on('input', function () {
+            var mevcutbolumler = parseFloat($("#mevcutbolumler").val()) || 0;
+            var mevcutsaati = parseFloat($("#mevcutsaati").val()) || 0;
+            var toplamsaat = mevcutbolumler * mevcutsaati;
+            $("#toplamsaat").val(toplamsaat);
+        });
+
+        $("#catinput").hide();
+        $("#addcat").click(function () {
+            $("#catinput").show();
+        });
+        $("#backcat").click(function () {
+            $("#catinput").hide();
+        });
+
+        {%for ders in Ders %}
+        $(".cat{{ ders.category.id }}").click(function () {
+            $(".dershide").hide();
+            $(".ders{{ ders.category.id }}").show();
+        });
+        $(".status{{ ders.status }}").click(function () {
+            $(".dershide").hide();
+            $(".ders{{ ders.status }}").show();
+        });
+        {% endfor %}
+    });
+</script>
+<script>
+    $(function () {
+        'use strict';
+
+        var ticksStyle = {
+            fontColor: '#495057',
+            fontStyle: 'bold'
+        };
+
+        var mode = 'index';
+        var intersect = true;
+
+        var $salesChart = $('#sales-chart');
+        var salesChart = new Chart($salesChart, {
+            type: 'bar',
+            data: {
+                labels: ['Saat Detayları'],
+                datasets: [
+                    {
+                        backgroundColor: '#007bff',
+                        borderColor: '#007bff',
+                        data: ['50']
+                    },
+                    {
+                        backgroundColor: '#ced4da',
+                        borderColor: '#ced4da',
+                        data: ['30']
+                    }
+                ]
+            },
+            options: {
+                maintainAspectRatio: false,
+                tooltips: {
+                    mode: mode,
+                    intersect: intersect
+                },
+                hover: {
+                    mode: mode,
+                    intersect: intersect
+                },
+                legend: {
+                    display: false
+                },
+                scales: {
+                    yAxes: [{
+                        gridLines: {
+                            display: true,
+                            lineWidth: '4px',
+                            color: 'rgba(0, 0, 0, .2)',
+                            zeroLineColor: 'transparent'
+                        },
+                        ticks: $.extend({
+                            beginAtZero: true,
+                        }, ticksStyle)
+                    }],
+                    xAxes: [{
+                        display: true,
+                        gridLines: {
+                            display: false
+                        },
+                        ticks: ticksStyle
+                    }]
+                }
+            }
+        });
+
+        var pieChart = document.getElementById('visitors-chart').getContext('2d');
+        var myPieChart = new Chart(pieChart, {
+            type: 'pie',
+            data: {
+                datasets: [{
+                    data: ['{{ dersmevcut }}', '{{ dersseçildi }}', '{{ derstamamlandı }}'],
+                    backgroundColor: ["#27c100", "#f3545d", "#fdaf4b"],
+                    borderWidth: 10,
+                }],
+                labels: ['Mevcut', 'Seçildi', 'Tamamlandı']
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                legend: {
+                    position: 'bottom',
+                    labels: {
+                        fontColor: '#000',
+                        fontSize: 15,
+                        usePointStyle: true,
+                        padding: 30
+                    }
+                },
+                pieceLabel: {
+                    render: 'percentage',
+                    fontColor: 'white',
+                    fontSize: 14,
+                }
+            }
+        });
+    });
+</script>
+</body>
+</html>

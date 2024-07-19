@@ -1,0 +1,93 @@
+{%  load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'interface/css/header_footer.css ' %}">
+    <link rel="stylesheet" href="{% static 'interface/css/iletisim.css ' %}">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css" integrity="sha256-XoaMnoYC5TH6/+ihMEnospgm0J1PM/nioxbOUdnM8HY=" crossorigin="anonymous">
+    <title>Okulcepte</title>
+</head>
+<body>
+    <header>
+        <div class="header">
+            <div class="yedek">
+                <img src="{% static 'interface/img/logo.png' %}">
+                <nav>
+                    <ul>
+                        <li class="active"><a href="../index">AnaSayfa</a> </li>
+                        <li><a href="../dersler">Dersler</a></li>
+                        <li><a href="../hocalar">Hocalar</a></li>
+                        <li><a href="../galeri">Galeri</a></li>
+                        <li><a href="../uyeolmak">Admın</a></li>
+                        <li class="active"><a href="../iletisim">İletisim</a></li>
+                    </ul>
+                        
+                    
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="yedek">
+            <h1>Bize Ulaşın</h1>
+            <form action="#">
+                <div>
+                    <label for="isim">İsminiz:</label>
+                    <input type="text" id="isim" name="isim">
+                </div>
+                <div>
+                    <label for="eposta">Epostanız:</label>
+                    <input type="text" id="eposta" name="isim">
+                </div>
+                <div>
+                    <label for="msg">Mesajınız:</label>
+                    <textarea name="msg" id="msg"></textarea>
+                </div>
+                <div>
+                    <button type="submit">Gönder</button>
+                </div>
+            </form>
+        </div>
+    </main>
+ 
+    <footer>
+        <div class="yedek">
+            <div class="column">
+                <h3>Okul Cepte</h3>
+                <p> Okulcepte 2024 © Tüm Haklar Saklıdır.</p>
+            </div>
+    
+            <div class="column">
+                <h3>Hızlı Erişim</h3>
+                <ul>
+                    <li><a href="../index">AnaSayfa</a> </li>
+                    <li><a href="./dersler">Dersler</a></li>
+                    <li><a href="../hocalar">Hocalar</a></li>
+                    <li><a href="../galeri">Galeri</a></li>
+                    <li><a href="../uyeolmak">Admin</a></li>
+                    <li class="active"><a href="../iletisim">İletisim</a></li>
+                </ul>
+            </div>
+    
+            <div class="column">
+                <h3>İletisim</h3>
+                <h5>Adress</h5> 
+                <p> İstanbul, Turkey</p>
+                <h5>Email Adresi</h5>
+                <p>okulcepte@gmail.com</p>
+                <h5>Telefon Numarası</h5>
+                <p>+90 5378759809</p>            
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
+{% endblock %}
